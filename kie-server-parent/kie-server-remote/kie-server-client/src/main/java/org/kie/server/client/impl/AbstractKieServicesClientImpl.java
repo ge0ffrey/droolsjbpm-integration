@@ -62,7 +62,7 @@ public abstract class AbstractKieServicesClientImpl {
 
     protected String baseURI;
     protected final KieServicesConfiguration config;
-    protected final Marshaller marshaller;
+    public final Marshaller marshaller;
     protected ClassLoader classLoader;
 
     public AbstractKieServicesClientImpl(KieServicesConfiguration config) {
