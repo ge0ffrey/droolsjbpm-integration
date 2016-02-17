@@ -50,7 +50,7 @@ public class SolverServicesClientImpl
         } else {
             //            CommandScript script = new CommandScript( Collections.singletonList((KieServerCommand) new CallContainerCommand(id, payload)) );
             //            return (ServiceResponse<String>) executeJmsCommand( script ).getResponses().get( 0 );
-            return null;
+            throw new UnsupportedOperationException( "JMS is not supported at the moment." );
         }
     }
 
@@ -64,7 +64,7 @@ public class SolverServicesClientImpl
         } else {
 //            CommandScript script = new CommandScript( Collections.singletonList((KieServerCommand) new CallContainerCommand(id, payload)) );
 //            return (ServiceResponse<String>) executeJmsCommand( script ).getResponses().get( 0 );
-            return null;
+            throw new UnsupportedOperationException( "JMS is not supported at the moment." );
         }
     }
 
@@ -78,7 +78,7 @@ public class SolverServicesClientImpl
         } else {
             //            CommandScript script = new CommandScript( Collections.singletonList((KieServerCommand) new CallContainerCommand(id, payload)) );
             //            return (ServiceResponse<String>) executeJmsCommand( script ).getResponses().get( 0 );
-            return null;
+            throw new UnsupportedOperationException( "JMS is not supported at the moment." );
         }
     }
 
@@ -92,7 +92,7 @@ public class SolverServicesClientImpl
         } else {
             //            CommandScript script = new CommandScript( Collections.singletonList((KieServerCommand) new CallContainerCommand(id, payload)) );
             //            return (ServiceResponse<String>) executeJmsCommand( script ).getResponses().get( 0 );
-            return null;
+            throw new UnsupportedOperationException( "JMS is not supported at the moment." );
         }
     }
 
@@ -106,7 +106,7 @@ public class SolverServicesClientImpl
         } else {
             //            CommandScript script = new CommandScript( Collections.singletonList((KieServerCommand) new CallContainerCommand(id, payload)) );
             //            return (ServiceResponse<String>) executeJmsCommand( script ).getResponses().get( 0 );
-            return null;
+            throw new UnsupportedOperationException( "JMS is not supported at the moment." );
         }
     }
 
@@ -120,7 +120,7 @@ public class SolverServicesClientImpl
         } else {
             //            CommandScript script = new CommandScript( Collections.singletonList((KieServerCommand) new CallContainerCommand(id, payload)) );
             //            return (ServiceResponse<String>) executeJmsCommand( script ).getResponses().get( 0 );
-            return null;
+            throw new UnsupportedOperationException( "JMS is not supported at the moment." );
         }
     }
 
