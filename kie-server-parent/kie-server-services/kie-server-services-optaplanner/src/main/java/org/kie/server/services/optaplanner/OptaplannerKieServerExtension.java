@@ -32,7 +32,7 @@ public class OptaplannerKieServerExtension
 
     private static final Logger logger = LoggerFactory.getLogger( OptaplannerKieServerExtension.class );
 
-    public static final String EXTENSION_NAME = "Optaplanner";
+    public static final String EXTENSION_NAME = "OptaPlanner";
 
     private static final Boolean droolsDisabled = Boolean.parseBoolean(System.getProperty(KieServerConstants.KIE_DROOLS_SERVER_EXT_DISABLED, "false"));
     private static final Boolean disabled = Boolean.parseBoolean( System.getProperty( KieServerConstants.KIE_OPTAPLANNER_SERVER_EXT_DISABLED, "false" ) );
@@ -114,7 +114,7 @@ public class OptaplannerKieServerExtension
 
     @Override
     public String getImplementedCapability() {
-        return "Optaplanner";
+        return "OptaPlanner";
     }
 
     @Override
