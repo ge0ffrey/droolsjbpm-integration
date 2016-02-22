@@ -261,7 +261,7 @@ public class OptaplannerIntegrationTest
 
         Solution solution = null;
         // It can take a while for the Construction Heuristic to initialize the solution
-        for (int i = 0; i < 30; i++) {
+        for (int i = 0; i < 15; i++) {
             ServiceResponse<Solution> solutionResponse = solverClient.getSolverBestSolution(CONTAINER_1_ID, SOLVER_1_ID);
             assertSuccess(solutionResponse);
             solution = solutionResponse.getResult();
