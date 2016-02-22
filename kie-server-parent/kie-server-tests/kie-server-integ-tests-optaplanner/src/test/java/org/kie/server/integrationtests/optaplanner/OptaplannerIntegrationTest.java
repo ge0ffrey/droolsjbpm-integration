@@ -219,7 +219,7 @@ public class OptaplannerIntegrationTest
         assertSuccess( solverClient.disposeSolver( CONTAINER_1_ID, SOLVER_1_ID ) );
     }
 
-    @Test @Ignore("Same issue as in testTerminateEarly.")
+    @Test
     public void testExecuteRunningSolver() throws Exception {
         SolverInstance instance = new SolverInstance();
         instance.setSolverConfigFile( SOLVER_1_CONFIG );
