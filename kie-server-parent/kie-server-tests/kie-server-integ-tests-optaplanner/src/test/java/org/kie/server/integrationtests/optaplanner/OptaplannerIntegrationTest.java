@@ -209,7 +209,7 @@ public class OptaplannerIntegrationTest
 
         // solver should finish in 5 seconds, but we wait up to 15s before timing out
         for( int i = 0; i < 5 && response.getResult().getStatus() == SolverInstance.SolverStatus.SOLVING; i++ ) {
-            Thread.currentThread().sleep( 3000 );
+            Thread.sleep( 3000 );
             response = solverClient.getSolverState( CONTAINER_1_ID, SOLVER_1_ID );
             assertSuccess( response );
         }
@@ -270,7 +270,7 @@ public class OptaplannerIntegrationTest
             if (solution.getScore() != null) {
                 break;
             }
-            Thread.currentThread().sleep(1000);
+            Thread.sleep(1000);
         }
         // TODO add "|| solution.getScore().isInitialized()" once PLANNER-405 is fixed
         assertTrue(solution.getScore() != null);
