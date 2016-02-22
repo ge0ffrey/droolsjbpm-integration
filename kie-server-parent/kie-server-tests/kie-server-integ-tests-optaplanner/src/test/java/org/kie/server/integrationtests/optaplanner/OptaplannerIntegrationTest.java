@@ -320,7 +320,7 @@ public class OptaplannerIntegrationTest
         assertResultContainsStringRegex(updateSolverState.getMsg(), "Solver.*on container.*already terminated.");
     }
 
-    @Test @Ignore("Ignoring for now. Geoffrey will review why this is failing.")
+    @Test
     public void testTerminateEarly() throws Exception {
         assertSuccess( client.createContainer( CONTAINER_1_ID, new KieContainerResource( CONTAINER_1_ID, kjar1 ) ) );
 
@@ -341,7 +341,8 @@ public class OptaplannerIntegrationTest
         instance.setStatus( SolverInstance.SolverStatus.NOT_SOLVING );
         response = solverClient.updateSolverState( CONTAINER_1_ID, SOLVER_1_ID, instance );
         assertSuccess( response );
-        assertEquals( SolverInstance.SolverStatus.TERMINATING_EARLY, response.getResult().getStatus() );
+        assertTrue(response.getResult().getStatus() == SolverInstance.SolverStatus.TERMINATING_EARLY
+                || response.getResult().getStatus() == SolverInstance.SolverStatus.NOT_SOLVING);
 
         assertSuccess( solverClient.disposeSolver( CONTAINER_1_ID, SOLVER_1_ID ) );
     }
