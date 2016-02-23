@@ -131,9 +131,14 @@ public class OptaplannerIntegrationTest
         assertEquals( "Expected FAILURE response, but got " + type + "!", ServiceResponse.ResponseType.FAILURE, type );
     }
 
-    @Ignore @Test(expected = KieServicesException.class)
+    @Test
     public void testDisposeNotExistingSolver() throws Exception {
-        solverClient.disposeSolver( CONTAINER_1_ID, SOLVER_1_ID );
+        try {
+            solverClient.disposeSolver( CONTAINER_1_ID, SOLVER_1_ID );
+            fail("A KieServicesException should have been thrown by now.");
+        } catch (KieServicesException e) {
+            assertResultContainsStringRegex(e.getMessage(), ".*Solver.*from container.*not found.*");
+        }
     }
 
     @Test
