@@ -145,22 +145,23 @@ public class SolverServiceBase {
         }
     }
 
-    public ServiceResponse<Solution> getBestSolution( String containerId, String solverId ) {
+    public ServiceResponse<SolverInstance> getBestSolution( String containerId, String solverId ) {
         try {
             SolverInstanceContext sic = solvers.get( SolverInstance.getSolverInstanceKey( containerId, solverId ) );
             if( sic != null ) {
-                Solution bestSolution = sic.getSolver().getBestSolution();
-                return new ServiceResponse<Solution>(ServiceResponse.ResponseType.SUCCESS,
+                updateSolverInstance( sic );
+                sic.getInstance().setBestSolution(sic.getSolver().getBestSolution());
+                return new ServiceResponse<SolverInstance>(ServiceResponse.ResponseType.SUCCESS,
                                                            "Best computed solution for '" + solverId + "' successfully retrieved from container '" + containerId + "'",
-                                                           bestSolution );
+                                                            sic.getInstance() );
             } else {
-                return new ServiceResponse<Solution>(ServiceResponse.ResponseType.FAILURE,
+                return new ServiceResponse<SolverInstance>(ServiceResponse.ResponseType.FAILURE,
                                                            "Solver '" + solverId + "' not found in container '" + containerId + "'",
                                                            null );
             }
         } catch (Exception e) {
             logger.error("Error retrieving solver '" + solverId + "' state from container '" + containerId + "'", e);
-            return new ServiceResponse<Solution>(ServiceResponse.ResponseType.FAILURE,
+            return new ServiceResponse<SolverInstance>(ServiceResponse.ResponseType.FAILURE,
                                                        "Error retrieving solver '" + solverId + "' state from container '" + containerId + "'" + e.getMessage(),
                                                        null );
         }

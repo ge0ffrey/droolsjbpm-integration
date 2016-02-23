@@ -244,7 +244,7 @@ public class OptaplannerIntegrationTest
         assertSuccess( solverClient.disposeSolver( CONTAINER_1_ID, SOLVER_1_ID ) );
     }
 
-    @Test @Ignore("Ignoring for now. Geoffrey will review why this is failing.")
+    @Test
     public void testGetBestSolution() throws Exception {
         SolverInstance instance = new SolverInstance();
         instance.setSolverConfigFile( SOLVER_1_CONFIG );
@@ -262,12 +262,12 @@ public class OptaplannerIntegrationTest
         Solution solution = null;
         // It can take a while for the Construction Heuristic to initialize the solution
         for (int i = 0; i < 15; i++) {
-            ServiceResponse<Solution> solutionResponse = solverClient.getSolverBestSolution(CONTAINER_1_ID, SOLVER_1_ID);
+            ServiceResponse<SolverInstance> solutionResponse = solverClient.getSolverBestSolution(CONTAINER_1_ID, SOLVER_1_ID);
             assertSuccess(solutionResponse);
-            solution = solutionResponse.getResult();
+            solution = solutionResponse.getResult().getBestSolution();
             // Only once the solution's score is null, the solution is fully uninitialized
             // TODO add "|| solution.getScore().isInitialized()" once PLANNER-405 is fixed
-            if (solution.getScore() != null) {
+            if (solution != null && solution.getScore() != null) {
                 break;
             }
             Thread.sleep(1000);
