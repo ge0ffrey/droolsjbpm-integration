@@ -317,7 +317,13 @@ public class SolverServiceBase {
                     public void run() {
                         try {
                             // If the executor's queue is full, it's possible that the solver gets canceled before it starts
-                            if (sic.getInstance().getStatus() == SolverInstance.SolverStatus.SOLVING) {
+                            SolverInstance.SolverStatus status;
+                            synchronized (sic) {
+                                status = sic.getInstance().getStatus();
+                                // TODO Race condition: status turns into non-solving before solver starts
+                                // See https://issues.jboss.org/browse/PLANNER-540
+                            }
+                            if (status == SolverInstance.SolverStatus.SOLVING) {
                                 sic.getSolver().solve( instance.getPlanningProblem() );
                             }
                         } catch( Exception e ) {
